@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18 # Adjust if needed
           cache: npm
 
       - name: Install Dependencies
@@ -34,7 +34,7 @@ jobs:
       - name: Deploy to Netlify
         uses: netlify/actions/cli@master
         env:
-          NETLIFY_AUTH_TOKEN: nfp_56hKMS6F8fK56f39wpzBBwhi4CZt1Svtd75d
-          NETLIFY_SITE_ID: 35d74bc8-b4f1-41cd-99be-a3939f4f3f61
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         with:
           args: deploy --prod --dir=dist
